@@ -6,7 +6,10 @@ import tensorflow as tf
 EFNS = [efn.EfficientNetB0, efn.EfficientNetB1, efn.EfficientNetB2, efn.EfficientNetB3, 
         efn.EfficientNetB4, efn.EfficientNetB5, efn.EfficientNetB6, efn.EfficientNetB7]
 
-
+def create_opencv_image_from_stringio(img_stream, cv2_img_flag=0):
+    img_stream.seek(0)
+    img_array = np.asarray(bytearray(img_stream.read()), dtype=np.uint8)
+    return cv2.imdecode(img_array, cv2_img_flag)
 
 def build_model(dim = 256, ef = 0, IMAGE_SIZE=(512,512), NUM_CLASSES=5):
     inp = tf.keras.layers.Input(shape=(*IMAGE_SIZE, 3))
