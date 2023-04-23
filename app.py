@@ -14,7 +14,7 @@ model_path = "./fold-4.h5" # replace this by downloading the model file from the
 model = build_model(ef=4)
 model.load_weights(model_path)
 
-st.write("Diabetic retinopathy is a serious eye condition that can lead to vision loss. Early detection and treatment are crucial for preventing vision loss. However, it is important to note that this software is not a substitute for a professional medical opinion. If you have any concerns about your eye health, please consult a doctor for a comprehensive eye exam and proper diagnosis.")
+
 uploaded_file = st.file_uploader("Upload the Image")
 if st.button('Predict'):
     img = Image.open(uploaded_file)
@@ -31,6 +31,7 @@ if st.button('Predict'):
     plt.yticks(range(len(proba[0])),classes)
     plt.title('Probabilities of Each Class')
     st.pyplot(fig)
+st.write("Diabetic retinopathy is a serious eye condition that can lead to vision loss. Early detection and treatment are crucial for preventing vision loss. However, it is important to note that this software is not a substitute for a professional medical opinion. If you have any concerns about your eye health, please consult a doctor for a comprehensive eye exam and proper diagnosis.")
 
 
 
