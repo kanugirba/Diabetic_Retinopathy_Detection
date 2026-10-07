@@ -32,7 +32,7 @@ def load_trained_model():
     return m
 
 st.title("👁️ Diabetic Retinopathy Detection")
-st.markdown("Automated screening and severity classification using Deep Learning (EfficientNet-B4).")
+st.markdown("Automated screening and severity classification using **D-RetinoNet**.")
 
 with st.spinner("Loading AI model..."):
     model = load_trained_model()
@@ -65,7 +65,7 @@ with col2:
                 confidence = proba[0][pred_idx] * 100
                 
                 # Display processed image
-                st.image(processed_img, caption="Preprocessed Image (Ben Graham's method)", use_container_width=True)
+                st.image(processed_img, caption="Preprocessed Retinal Image", use_container_width=True)
                 
                 # Severity alerts
                 if pred_idx == 0:
@@ -93,6 +93,52 @@ with col2:
                 st.pyplot(fig)
     else:
         st.info("👆 Please upload a retinal fundus image on the left to begin diagnosis.")
+
+# Sidebar information
+with st.sidebar:
+    st.image("https://img.icons8.com/fluency/96/artificial-intelligence.png", width=60)
+    st.title("About the System")
+    st.markdown("""
+    This intelligent diagnostic platform utilizes deep convolutional neural networks to screen and grade diabetic retinopathy severity from retinal fundus photographs.
+    
+    **Severity Classes:**
+    - **Grade 0:** No DR
+    - **Grade 1:** Mild NPDR
+    - **Grade 2:** Moderate NPDR
+    - **Grade 3:** Severe NPDR
+    - **Grade 4:** Proliferative DR (PDR)
+    """)
+    st.divider()
+    st.markdown("### 📚 Key Research")
+    st.caption("**Journal Publication (IF: 5.7)**")
+    st.markdown("""
+    *D-RetinoNet: Diabetic retinopathy stage classification via deep Duo-branch S2 feature based neural network*  
+    **Biomedical Signal Processing and Control (2026)**
+    """)
+
+st.divider()
+
+# Research & Publications section
+st.subheader("📚 Research & Publications")
+
+pub_col1, pub_col2 = st.columns(2)
+
+with pub_col1:
+    st.markdown("""
+    #### 📄 Journal Publications
+    1. **Anugirba, K, Lal Raja Singh, R & Rimal Isaac, RS** (2026),  
+       *‘D-RetinoNet: Diabetic retinopathy stage classification via deep Duo-branch S2 feature based neural network’*,  
+       **Biomedical Signal Processing and Control**, vol. 119, no. Part B, pp. 1–14.  
+       *(Impact Factor: 5.7)*
+    """)
+
+with pub_col2:
+    st.markdown("""
+    #### 📑 Conference Publications
+    1. **Anugirba, K & Lal Raja Singh, R** (2023),  
+       *‘Deep Learning-Based Diabetic Retinopathy Detection Using ResNet34 Model’*,  
+       **Proceedings of the International Conference on Circuit Power and Computing Technologies (ICCPCT)**, pp. 225–228.
+    """)
 
 st.divider()
 st.caption("⚠️ **Medical Disclaimer**: Diabetic retinopathy is a serious eye condition that can lead to vision loss. Early detection and treatment are crucial. This AI tool is designed for research/screening assistance and is not a substitute for a professional medical diagnosis by an ophthalmologist.")
