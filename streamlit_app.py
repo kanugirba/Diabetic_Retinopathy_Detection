@@ -96,7 +96,3 @@ with col2:
 
 st.divider()
 st.caption("⚠️ **Medical Disclaimer**: Diabetic retinopathy is a serious eye condition that can lead to vision loss. Early detection and treatment are crucial. This AI tool is designed for research/screening assistance and is not a substitute for a professional medical diagnosis by an ophthalmologist.")
-
-
-
-

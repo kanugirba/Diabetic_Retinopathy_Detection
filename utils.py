@@ -6,12 +6,12 @@ import tensorflow as tf
 EFNS = [efn.EfficientNetB0, efn.EfficientNetB1, efn.EfficientNetB2, efn.EfficientNetB3, 
         efn.EfficientNetB4, efn.EfficientNetB5, efn.EfficientNetB6, efn.EfficientNetB7]
 
-def build_model(dim = 256, ef = 0, IMAGE_SIZE=(512,512), NUM_CLASSES=5):
+def build_model(dim = 256, ef = 0, IMAGE_SIZE=(512,512), NUM_CLASSES=5, weights=None):
     inp = tf.keras.layers.Input(shape=(*IMAGE_SIZE, 3))
     
     #x = data_augmentation(inp)
     
-    base = EFNS[ef](input_shape=(*IMAGE_SIZE, 3), weights='imagenet', include_top = False)
+    base = EFNS[ef](input_shape=(*IMAGE_SIZE, 3), weights=weights, include_top = False)
     
     x = base(inp)
     x = tf.keras.layers.GlobalAveragePooling2D()(x)
